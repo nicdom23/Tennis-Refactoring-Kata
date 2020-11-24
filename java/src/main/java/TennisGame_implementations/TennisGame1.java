@@ -33,32 +33,41 @@ public class TennisGame1 implements TennisGame {
         }
         else
         {
-                switch(score_player_2)
-                {
-                  case 0:
-                      score+="-Love";
-                      break;
-                  case 1:
-                      score+="-Fifteen";
-                      break;
-                  case 2:
-                      score+="-Thirty";
-                      break;
-                  case 3:
-                      score+="-Forty";
-                      break;
-                }
+            score = set_player_2_score(score);
         }
 
         return score;
     }
 
+    private String set_player_2_score(String score) {
+        switch(score_player_2)
+        {
+          case 0:
+              score +="-Love";
+              break;
+          case 1:
+              score +="-Fifteen";
+              break;
+          case 2:
+              score +="-Thirty";
+              break;
+          case 3:
+              score +="-Forty";
+              break;
+        }
+        return score;
+    }
+
 
     private String set_tie_case(String score) {
-        if(score_player_1 == 3  || score_player_1 == 4)
+        if(is_score_Deuce())
             score = "Deuce";
         else score += "-All";
         return score;
+    }
+
+    private boolean is_score_Deuce() {
+        return score_player_1 == 3  || score_player_1 == 4;
     }
 
 
