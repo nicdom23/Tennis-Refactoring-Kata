@@ -23,11 +23,11 @@ public class TennisGame1 implements TennisGame {
     public String getScore() {
         String score = "";
         score = Set_player_1_score();
-        if (score_player_1==score_player_2)
+        if (is_tie())
         {
             score = set_tie_case(score);
         }
-        else if (score_player_1>=4 || score_player_2>=4)
+        else if (player_has_advantage())
         {
             score = Set_advantage_or_victory();
         }
@@ -37,6 +37,14 @@ public class TennisGame1 implements TennisGame {
         }
 
         return score;
+    }
+
+    private boolean player_has_advantage() {
+        return score_player_1>=4 || score_player_2>=4;
+    }
+
+    private boolean is_tie() {
+        return score_player_1==score_player_2;
     }
 
     private String set_player_2_score(String score) {
