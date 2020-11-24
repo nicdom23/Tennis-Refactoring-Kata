@@ -1,3 +1,5 @@
+package TennisGame_implementations;
+import TennisGame_inteface.TennisGame;
 
 public class TennisGame1 implements TennisGame {
     
@@ -12,7 +14,7 @@ public class TennisGame1 implements TennisGame {
     }
 
     public void wonPoint(String playerName) {
-        if (playerName == "player1")
+        if (playerName == player1Name)//error "player1" instead of player1Name
             m_score1 += 1;
         else
             m_score2 += 1;
@@ -20,7 +22,6 @@ public class TennisGame1 implements TennisGame {
 
     public String getScore() {
         String score = "";
-        int tempScore=0;
         if (m_score1==m_score2)
         {
             switch (m_score1)
@@ -50,11 +51,7 @@ public class TennisGame1 implements TennisGame {
         }
         else
         {
-            for (int i=1; i<3; i++)
-            {
-                if (i==1) tempScore = m_score1;
-                else { score+="-"; tempScore = m_score2;}
-                switch(tempScore)
+                switch(m_score1)
                 {
                     case 0:
                         score+="Love";
@@ -69,6 +66,20 @@ public class TennisGame1 implements TennisGame {
                         score+="Forty";
                         break;
                 }
+              switch(m_score2)
+              {
+                  case 0:
+                      score+="-Love";
+                      break;
+                  case 1:
+                      score+="-Fifteen";
+                      break;
+                  case 2:
+                      score+="-Thirty";
+                      break;
+                  case 3:
+                      score+="-Forty";
+                      break;
             }
         }
         return score;
