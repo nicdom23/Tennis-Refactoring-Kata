@@ -22,28 +22,10 @@ public class TennisGame1 implements TennisGame {
 
     public String getScore() {
         String score = "";
-        switch(score_player_1)
-        {
-            case 0:
-                score="Love";
-                break;
-            case 1:
-                score="Fifteen";
-                break;
-            case 2:
-                score="Thirty";
-                break;
-            case 3:
-                score="Forty";
-                break;
-            default:
-                    score = "";
-        }
+        score = Set_player_1_score();
         if (score_player_1==score_player_2)
         {
-            if(score_player_1 == 3  || score_player_1 == 4)
-                score = "Deuce";
-            else score += "-All";
+            score = set_tie_case(score);
         }
         else if (score_player_1>=4 || score_player_2>=4)
         {
@@ -68,6 +50,37 @@ public class TennisGame1 implements TennisGame {
                 }
         }
 
+        return score;
+    }
+
+
+    private String set_tie_case(String score) {
+        if(score_player_1 == 3  || score_player_1 == 4)
+            score = "Deuce";
+        else score += "-All";
+        return score;
+    }
+
+
+    private String Set_player_1_score() {
+        String score;
+        switch(score_player_1)
+        {
+            case 0:
+                score="Love";
+                break;
+            case 1:
+                score="Fifteen";
+                break;
+            case 2:
+                score="Thirty";
+                break;
+            case 3:
+                score="Forty";
+                break;
+            default:
+                    score = "";
+        }
         return score;
     }
 
